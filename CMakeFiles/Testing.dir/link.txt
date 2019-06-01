@@ -1,1 +1,1 @@
-/usr/bin/c++   -Wall -std=c++11 -pedantic   CMakeFiles/Testing.dir/utility/console.cpp.o CMakeFiles/Testing.dir/utility/util.cpp.o CMakeFiles/Testing.dir/test/test.cpp.o  -o Testing libHuffmanCompresser.a 
+/usr/bin/c++   -Wall -std=c++11 -pedantic -g -fsanitize=address,undefined -D_GLIBCXX_DEBUG   CMakeFiles/Testing.dir/utility/console.cpp.o CMakeFiles/Testing.dir/utility/util.cpp.o CMakeFiles/Testing.dir/test/test.cpp.o  -o Testing libHuffmanCompresser.a 
