@@ -9,19 +9,19 @@ file_reader::file_reader(const char *filename, const char *mode) {
 }
 
 template<typename T>
-bool file_reader::read_block(int size, std::vector<T> &text) {}
+bool file_reader::read_block(size_t size, std::vector<T> &text) {}
 
 template<>
-bool file_reader::read_block(int size, std::vector<unsigned char> &text) {
+bool file_reader::read_block(size_t size, std::vector<unsigned char> &text) {
     text.clear();
-    text.resize((unsigned long) size);
-    size_t cnt_read = fread(text.data(), 1, (size_t) size, file);
+    text.resize(size);
+    size_t cnt_read = fread(text.data(), 1, size, file);
     text.erase(text.begin() + cnt_read, text.end());
     return cnt_read > 0;
 }
 
 template<>
-bool file_reader::read_block(int size, std::vector<int> &text) {
+bool file_reader::read_block(size_t size, std::vector<int> &text) {
     text.clear();
     int token;
     while (size > 0 && fscanf(file, "%d", &token) > 0) {

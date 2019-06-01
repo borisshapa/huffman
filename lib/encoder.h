@@ -8,8 +8,8 @@ struct encoder {
     static unsigned const ALPHABET = (1u << 8u);
     encoder();
     void build_tree();
-    void compress(std::vector<unsigned char> &text, std::vector<unsigned char> &encoded_text);
-    void get_freq(std::vector<int> &frequencies);
+    void compress(std::vector<unsigned char> &, std::vector<unsigned char> &);
+    void get_freq(std::vector<int> &);
     void set_freq(std::vector<unsigned char>&);
 private:
     int freq[ALPHABET];

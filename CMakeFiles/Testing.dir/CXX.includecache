@@ -6,6 +6,36 @@
 
 #IncludeRegexTransform: 
 
+/home/borisshapa/cpp-course/huffman/lib/decoder.h
+vector
+-
+queue
+-
+bitset
+-
+
+/home/borisshapa/cpp-course/huffman/lib/encoder.h
+vector
+-
+bitset
+-
+
+/home/borisshapa/cpp-course/huffman/utility/console.cpp
+../lib/encoder.h
+/home/borisshapa/cpp-course/huffman/lib/encoder.h
+../lib/decoder.h
+/home/borisshapa/cpp-course/huffman/lib/decoder.h
+../utility/util.h
+/home/borisshapa/cpp-course/huffman/utility/util.h
+../utility/console.h
+/home/borisshapa/cpp-course/huffman/utility/console.h
+iostream
+-
+cstring
+-
+
+/home/borisshapa/cpp-course/huffman/utility/console.h
+
 /home/borisshapa/cpp-course/huffman/utility/util.cpp
 iostream
 -
