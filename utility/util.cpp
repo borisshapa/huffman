@@ -18,7 +18,6 @@ bool file_reader::read_block(size_t size, std::vector<unsigned char> &text) {
     size_t cnt_read = fread(text.data(), 1, size, file);
     text.erase(text.begin() + cnt_read, text.end());
     if (ferror(file)) {
-        this->~file_reader();
         throw std::runtime_error("error reading");
     }
     return cnt_read > 0;
@@ -33,7 +32,6 @@ bool file_reader::read_block(size_t size, std::vector<int> &text) {
         --size;
     }
     if (ferror(file)) {
-        this->~file_reader();
         throw std::runtime_error("error reading");
     }
     return !text.empty();
@@ -47,7 +45,6 @@ void file_reader::write_block(std::vector<unsigned char> const &text, const char
         ++i;
     }
     if (ferror(file)) {
-        this->~file_reader();
         throw std::runtime_error("error writing");
     }
 }
@@ -60,7 +57,6 @@ void file_reader::write_block(std::vector<int> const &text, const char *sep) {
         ++i;
     }
     if (ferror(file)) {
-        this->~file_reader();
         throw std::runtime_error("error writing");
     }
 }
