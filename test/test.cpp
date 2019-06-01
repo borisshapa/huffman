@@ -198,7 +198,12 @@ int main(int argc, char *argv[]) {
         char *output_file = argv[3];
 
         if (strcmp(mode, "compress") == 0) {
-            compress(input_file, output_file);
+            try {
+                compress(input_file, output_file);
+            } catch (std::exception const & e) {
+                std::cout << e.what() << "\n";
+                return 0;
+            }
         } else if (strcmp(mode, "decompress") == 0) {
             try {
                 decompress(input_file, output_file);
