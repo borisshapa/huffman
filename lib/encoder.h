@@ -8,9 +8,9 @@ struct encoder {
     static unsigned const ALPHABET = (1u << 8u);
     encoder();
     void build_tree();
-    void compress(std::vector<unsigned char> &, std::vector<unsigned char> &);
-    void get_freq(std::vector<int> &);
-    void set_freq(std::vector<unsigned char>&);
+    void compress(std::vector<unsigned char> const &, std::vector<unsigned char> &);
+    std::vector<int> get_freq() const;
+    void set_freq(std::vector<unsigned char> const &);
 private:
     int freq[ALPHABET];
     static unsigned const MAX_VERTEX = (ALPHABET << 1u);

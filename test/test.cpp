@@ -9,9 +9,9 @@
 #include <vector>
 #include <cstring>
 
-char *input = (char *) ("input.txt");
-char *tmp = (char *) ("compressed.txt");
-char *res = (char *) ("decompressed.txt");
+char const * const input = "input.txt";
+char const * const tmp = "compressed.txt";
+char const * const res = "decompressed.txt";
 
 size_t test_num = 0;
 
@@ -202,7 +202,7 @@ int main(int argc, char *argv[]) {
         } else if (strcmp(mode, "decompress") == 0) {
             try {
                 decompress(input_file, output_file);
-            } catch (std::invalid_argument e) {
+            } catch (std::exception const & e) {
                 std::cout << e.what() << "\n";
                 return 0;
             }

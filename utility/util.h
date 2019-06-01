@@ -11,7 +11,7 @@ struct file_reader {
     ~file_reader();
     bool read_char(unsigned char &c);
     template <typename T> bool read_block(size_t size, std::vector <T> &text);
-    template <typename T> void write_block(std::vector<T> &text, const char *sep);
+    template <typename T> void write_block(std::vector<T> const &text, const char *sep);
     void reopen();
 private:
     FILE *file;

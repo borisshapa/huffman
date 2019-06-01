@@ -2,7 +2,7 @@
 #include <cstring>
 #include "decoder.h"
 
-decoder::decoder(const std::vector<int> &frequencies) {
+decoder::decoder(std::vector<int> const &frequencies) {
     for (size_t i = 0; i < ALPHABET; i++) {
         freq[i] = frequencies[i];
     }
@@ -59,7 +59,7 @@ std::pair<bool, unsigned char> decoder::get_buffer() {
     return std::make_pair(false, 0);
 }
 
-bool decoder::is_empty_buff() {
+bool decoder::is_empty_buff() const{
     return buff.empty();
 }
 

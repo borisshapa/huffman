@@ -41,7 +41,7 @@ void encoder::build_tree() {
     }
 }
 
-void encoder::compress(std::vector<unsigned char> &text, std::vector<unsigned char> &encoded_text) {
+void encoder::compress(std::vector<unsigned char> const &text, std::vector<unsigned char> &encoded_text) {
     int cnt = 0;
     unsigned new_symb = 0;
     for (unsigned char i : text) {
@@ -66,13 +66,15 @@ void encoder::compress(std::vector<unsigned char> &text, std::vector<unsigned ch
     }
 }
 
-void encoder::get_freq(std::vector<int> &frequencies) {
+std::vector<int> encoder::get_freq() const{
+    std::vector<int> frequencies;
     for (int i : freq) {
         frequencies.push_back(i);
     }
+    return frequencies;
 }
 
-void encoder::set_freq(std::vector<unsigned char> &text) {
+void encoder::set_freq(std::vector<unsigned char> const &text) {
     for (unsigned char i : text) {
         ++freq[i];
     }

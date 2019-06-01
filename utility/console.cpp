@@ -11,19 +11,30 @@ void compress(const char *input, const char *output) {
     std::vector<unsigned char> text;
 
     encoder en;
-    while (in.read_block(file_reader::BUFF, text)) {
-        en.set_freq(text);
+    try {
+        while (in.read_block(file_reader::BUFF, text)) {
+            en.set_freq(text);
+        }
+    } catch (std::runtime_error const &e) {
+        throw;
     }
-    std::vector<int> freq;
     en.build_tree();
-    en.get_freq(freq);
-    out.write_block(freq, " ");
-
+    std::vector<int> freq = en.get_freq();
+    try {
+        out.write_block(freq, " ");
+    } catch (std::runtime_error const &e) {
+        throw;
+    }
     in.reopen();
-    while (in.read_block(file_reader::BUFF, text)) {
-        std::vector<unsigned char> encoded_text;
-        en.compress(text, encoded_text);
-        out.write_block(encoded_text, "");
+
+    try {
+        while (in.read_block(file_reader::BUFF, text)) {
+            std::vector<unsigned char> encoded_text;
+            en.compress(text, encoded_text);
+            out.write_block(encoded_text, "");
+        }
+    } catch (std::runtime_error const &e) {
+        throw;
     }
 }
 
@@ -31,14 +42,15 @@ void decompress(const char *input, const char *output) {
     file_reader in(input, "rb");
     file_reader out(output, "wb");
     std::vector<int> freq;
+
+    unsigned char end;
     try {
         in.read_block(256, freq);
-    } catch (std::invalid_argument const &e) {
+        in.read_char(end);
+    } catch (std::runtime_error const &e) {
         throw;
     }
 
-    unsigned char end;
-    in.read_char(end);
     if (end != ' ') {
         throw std::invalid_argument("expected whitespace after frequencies");
     }
@@ -58,9 +70,13 @@ void decompress(const char *input, const char *output) {
         while (static_cast<int>(ans.size()) < file_reader::BUFF && cnt > 0) {
             if (dec.is_empty_buff()) {
                 unsigned char symb;
-                if (!in.read_char(symb)) {
-                    eof = true;
-                    break;
+                try {
+                    if (!in.read_char(symb)) {
+                        eof = true;
+                        break;
+                    }
+                } catch (std::runtime_error const &e) {
+                    throw;
                 }
                 dec.set_buffer(symb);
             }
@@ -71,7 +87,11 @@ void decompress(const char *input, const char *output) {
             }
         }
         dec.clear_buff();
-        out.write_block(ans, "");
+        try {
+            out.write_block(ans, "");
+        } catch (std::runtime_error const &e) {
+            throw;
+        }
         if (eof || cnt <= 0) {
             break;
         }

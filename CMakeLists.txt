@@ -3,7 +3,7 @@ project(huffman)
 
 set(CMAKE_CXX_STANDARD 17)
 
-set(S_EXE utility/console.h utility/console.cpp utility/util.h utility/util.cpp test/test.cpp)
+set(S_EXE util/console.h util/console.cpp util/util.h util/util.cpp test/test.cpp)
 set(S_LIB lib/encoder.h lib/encoder.cpp lib/decoder.h lib/decoder.cpp )
 
 if(CMAKE_COMPILER_IS_GNUCC OR CMAKE_COMPILER_IS_GNUCXX)
