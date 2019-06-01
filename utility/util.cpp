@@ -8,9 +8,6 @@ file_reader::file_reader(const char *filename, const char *mode) {
     this->mode = mode[0];
 }
 
-template<typename T>
-bool file_reader::read_block(size_t size, std::vector<T> &text) {}
-
 template<>
 bool file_reader::read_block(size_t size, std::vector<unsigned char> &text) {
     text.clear();
