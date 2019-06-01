@@ -6,18 +6,18 @@
 
 #IncludeRegexTransform: 
 
-/home/borisshapa/cpp-course/huffman/lib/decoder.cpp
+/home/borisshapa/cpp-course/huffman/lib/encoder.cpp
 set
 -
-cstring
+algorithm
 -
-decoder.h
-/home/borisshapa/cpp-course/huffman/lib/decoder.h
+iostream
+-
+encoder.h
+/home/borisshapa/cpp-course/huffman/lib/encoder.h
 
-/home/borisshapa/cpp-course/huffman/lib/decoder.h
+/home/borisshapa/cpp-course/huffman/lib/encoder.h
 vector
--
-queue
 -
 bitset
 -
