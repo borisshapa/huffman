@@ -1,0 +1,1 @@
+/usr/bin/c++  -g   CMakeFiles/ConsoleUtil.dir/utility/console.cpp.o CMakeFiles/ConsoleUtil.dir/utility/util.cpp.o  -o ConsoleUtil 

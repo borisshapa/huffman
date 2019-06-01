@@ -1,0 +1,3 @@
+/home/borisshapa/cpp-course/huffman/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/home/borisshapa/cpp-course/huffman/cmake-build-debug/CMakeFiles/huffman.dir
+/home/borisshapa/cpp-course/huffman/cmake-build-debug/CMakeFiles/edit_cache.dir

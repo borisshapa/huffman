@@ -1,25 +1,22 @@
 #include <set>
+#include <cstring>
 #include "decoder.h"
 
 decoder::decoder(const std::vector<int> &frequencies) {
-    for (int i = 0; i < ALPHABET; i++) {
+    for (size_t i = 0; i < ALPHABET; i++) {
         freq[i] = frequencies[i];
     }
-    for (int i = 0; i < MAX_VERTEX; ++i) {
+    for (size_t i = 0; i < MAX_VERTEX; ++i) {
         parent[i] = -1;
         children[i].first = children[i].second = -1;
     }
-    build_tree();
-}
 
-void decoder::build_tree() {
     std::set<std::pair<int, int> > sorted;
-    for (int i = 0; i < ALPHABET; ++i) {
-        symbols[i] = i;
+    for (size_t i = 0; i < ALPHABET; ++i) {
         sorted.insert(std::make_pair(freq[i], i));
     }
     int cur = ALPHABET;
-    for (int i = 0; i < ALPHABET - 1; ++i) {
+    for (size_t i = 0; i < ALPHABET - 1; ++i) {
         std::pair <int, int> v1 = *sorted.begin();
         sorted.erase(v1);
         std::pair <int, int> v2 = *sorted.begin();
@@ -33,13 +30,13 @@ void decoder::build_tree() {
     cur_vrtx = root;
 }
 
-void decoder::append_buff(unsigned char s) {
+void decoder::set_buffer(unsigned char s) {
     for (int i = 7; i >= 0; i--) {
-        buff.push(bool((s >> i) & 1));
+        buff.push((s >> i) & 1);
     }
 }
 
-std::pair<bool, unsigned char> decoder::get_symb_from_buff() {
+std::pair<bool, unsigned char> decoder::get_buffer() {
     while (!is_empty_buff()) {
         if (children[cur_vrtx] != std::make_pair(-1, -1)) {
             if (buff.front()) {
@@ -51,13 +48,13 @@ std::pair<bool, unsigned char> decoder::get_symb_from_buff() {
         } else {
             int tmp = cur_vrtx;
             cur_vrtx = root;
-            return std::make_pair(true, (unsigned char)tmp);
+            return std::make_pair(true, static_cast<unsigned char>(tmp));
         }
     }
     if (children[cur_vrtx] == std::make_pair(-1, -1)) {
         int tmp = cur_vrtx;
         cur_vrtx = root;
-        return std::make_pair(true, (unsigned char)tmp);
+        return std::make_pair(true, static_cast<unsigned char>(tmp));
     }
     return std::make_pair(false, 0);
 }

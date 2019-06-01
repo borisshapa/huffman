@@ -5,10 +5,10 @@
 #include <stdexcept>
 #include <vector>
 
-struct FileUtil {
-    static const int MAX_CHAR = (1 << 16);
-    FileUtil (const char *filename, const char *mode);
-    ~FileUtil();
+struct file_reader {
+    static const int BUFF = (1 << 16);
+    file_reader (const char *filename, const char *mode);
+    ~file_reader();
     bool read_char(unsigned char &c);
     template <typename T> bool read_block(int size, std::vector <T> &text);
     template <typename T> void write_block(std::vector<T> &text, const char *sep);

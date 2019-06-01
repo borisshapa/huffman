@@ -4,10 +4,10 @@
 #include "encoder.h"
 
 encoder::encoder() {
-    for (int i = 0; i < ALPHABET; ++i) {
-        freq[i] = 0;
+    for (int & i : freq) {
+        i = 0;
     }
-    for (int i = 0; i < MAX_VERTEX; ++i) {
+    for (size_t i = 0; i < MAX_VERTEX; ++i) {
         parent[i] = -1;
         children[i].first = children[i].second = -1;
     }
@@ -15,12 +15,11 @@ encoder::encoder() {
 
 void encoder::build_tree() {
     std::set<std::pair<int, int> > sorted;
-    for (int i = 0; i < ALPHABET; ++i) {
-        symbols[i] = i;
+    for (size_t i = 0; i < ALPHABET; ++i) {
         sorted.insert(std::make_pair(freq[i], i));
     }
     int cur = ALPHABET;
-    for (int i = 0; i < ALPHABET - 1; ++i) {
+    for (size_t i = 0; i < ALPHABET - 1; ++i) {
         std::pair<int, int> v1 = *sorted.begin();
         sorted.erase(v1);
         std::pair<int, int> v2 = *sorted.begin();
@@ -30,8 +29,7 @@ void encoder::build_tree() {
         children[cur].second = v2.second;
         sorted.insert(std::make_pair(v1.first + v2.first, cur++));
     }
-
-    for (int i = 0; i < ALPHABET; ++i) {
+    for (size_t i = 0; i < ALPHABET; ++i) {
         int cur_vertex = i;
         int cur_parent = parent[i];
         while (cur_parent != -1) {
@@ -43,7 +41,7 @@ void encoder::build_tree() {
     }
 }
 
-void encoder::encode(std::vector<unsigned char> &text, std::vector<unsigned char> &encoded_text) {
+void encoder::compress(std::vector<unsigned char> &text, std::vector<unsigned char> &encoded_text) {
     int cnt = 0;
     unsigned new_symb = 0;
     for (unsigned char i : text) {

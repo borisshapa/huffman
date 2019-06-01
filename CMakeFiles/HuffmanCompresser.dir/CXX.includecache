@@ -1,0 +1,24 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/borisshapa/cpp-course/huffman/lib/decoder.cpp
+set
+-
+cstring
+-
+decoder.h
+/home/borisshapa/cpp-course/huffman/lib/decoder.h
+
+/home/borisshapa/cpp-course/huffman/lib/decoder.h
+vector
+-
+queue
+-
+bitset
+-
+
