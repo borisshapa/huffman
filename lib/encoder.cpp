@@ -3,10 +3,7 @@
 #include <iostream>
 #include "encoder.h"
 
-encoder::encoder() {
-    for (int & i : freq) {
-        i = 0;
-    }
+encoder::encoder() : freq() {
     for (size_t i = 0; i < MAX_VERTEX; ++i) {
         parent[i] = -1;
         children[i].first = children[i].second = -1;
