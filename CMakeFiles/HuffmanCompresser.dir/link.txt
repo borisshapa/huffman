@@ -1,2 +1,0 @@
-/usr/bin/ar qc libHuffmanCompresser.a  CMakeFiles/HuffmanCompresser.dir/lib/encoder.cpp.o CMakeFiles/HuffmanCompresser.dir/lib/decoder.cpp.o
-/usr/bin/ranlib libHuffmanCompresser.a

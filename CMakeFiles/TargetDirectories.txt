@@ -1,4 +1,0 @@
-/home/borisshapa/cpp-course/huffman/CMakeFiles/rebuild_cache.dir
-/home/borisshapa/cpp-course/huffman/CMakeFiles/edit_cache.dir
-/home/borisshapa/cpp-course/huffman/CMakeFiles/HuffmanCompresser.dir
-/home/borisshapa/cpp-course/huffman/CMakeFiles/Testing.dir
